@@ -30,7 +30,7 @@ func AddTodo(t ToDo) (ToDo, error) {
 	return t, nil
 }
 
-func GetToDoByID(id int) (Todo, error) {
+func GetToDoByID(id int) (ToDo, error) {
 	for _, t := range todos {
 		if t.ID == id {
 			return *t, nil
@@ -52,7 +52,7 @@ func UpdateToDo(t ToDo) (ToDo, error) {
 func DeleteToDoByID(id int) error {
 	for i, t := range todos {
 		if t.ID == id {
-			todos = append(todos[:i], todos[i+1]...)
+			todos = append(todos[:i], todos[i+1:]...)
 			return nil
 		}
 	}
